@@ -1,5 +1,6 @@
 import app from "./server.js";
 import mongoose from "mongoose";
+import ReviewsDAO from "./dao/reviewsDAO.js";
 mongoose.Promise = global.Promise;
 const port = 8000;
 const uri = "mongodb://localhost/full_stack_practice_db";
@@ -20,6 +21,7 @@ const options = {
 mongoose.connect(uri, options).then(
   async () => {
     console.log(`Connected to MongoDB: ${uri}`);
+    await ReviewsDAO.injectDB(mongoose.connection);
     app.listen(port, () => {
       console.log(`Listing on port: ${port}`);
     });
