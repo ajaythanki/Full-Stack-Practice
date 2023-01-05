@@ -29,11 +29,12 @@ function returnMovies(url){
       
       const title = document.createElement('h3');
       const center = document.createElement('center');
-      title.innerHTML = `${elem.title}`;
+      title.innerHTML = `${elem.title}<br><a href="movie.html?id=${elem.id}&title=${elem.title}">reviews</a>`;
       title.setAttribute('id',"title");
 
       div_card.appendChild(image);
       center.appendChild(title);
+      div_card.appendChild(center);
       div_column.appendChild(div_card);
       div_row.appendChild(div_column);
       main.appendChild(div_row);
